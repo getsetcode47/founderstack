@@ -27,16 +27,22 @@ function getSessionSecret() {
     return 'founderstackhub-dev-session-secret';
   }
 
-  throw new Error('APP_SESSION_SECRET (or FREE_DEALS_COOKIE_SECRET) must be configured.');
+  return null;
 }
 
 function signSessionPayload(payload: string) {
-  return createHmac('sha256', getSessionSecret()).update(payload).digest('base64url');
+  const secret = getSessionSecret();
+  if (!secret) return null;
+  return createHmac('sha256', secret).update(payload).digest('base64url');
 }
 
 export function encodeSession(session: AppSession) {
   const payload = Buffer.from(JSON.stringify(session)).toString('base64url');
-  return `${payload}.${signSessionPayload(payload)}`;
+  const signature = signSessionPayload(payload);
+  if (!signature) {
+    throw new Error('APP_SESSION_SECRET (or FREE_DEALS_COOKIE_SECRET) must be configured.');
+  }
+  return `${payload}.${signature}`;
 }
 
 export function decodeSession(token: string | undefined | null): AppSession | null {
@@ -46,7 +52,10 @@ export function decodeSession(token: string | undefined | null): AppSession | nu
     const [payload, signature] = token.split('.');
     if (!payload || !signature) return null;
 
-    const expectedSignature = Buffer.from(signSessionPayload(payload), 'utf8');
+    const signed = signSessionPayload(payload);
+    if (!signed) return null;
+
+    const expectedSignature = Buffer.from(signed, 'utf8');
     const receivedSignature = Buffer.from(signature, 'utf8');
 
     if (expectedSignature.length !== receivedSignature.length) return null;

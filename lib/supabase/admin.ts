@@ -5,11 +5,7 @@ function getSupabaseUrl() {
     return process.env.NEXT_PUBLIC_SUPABASE_URL;
   }
 
-  if (process.env.NODE_ENV !== 'production') {
-    return 'https://placeholder.supabase.co';
-  }
-
-  throw new Error('NEXT_PUBLIC_SUPABASE_URL must be configured.');
+  return 'https://placeholder.supabase.co';
 }
 
 function getServiceRoleKey() {
@@ -17,11 +13,18 @@ function getServiceRoleKey() {
     return process.env.SUPABASE_SERVICE_ROLE_KEY;
   }
 
-  if (process.env.NODE_ENV !== 'production' && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  if (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     return process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   }
 
-  throw new Error('SUPABASE_SERVICE_ROLE_KEY must be configured.');
+  return 'placeholder-service-role-key';
+}
+
+export function isAdminClientConfigured() {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+  );
 }
 
 export function createAdminClient() {

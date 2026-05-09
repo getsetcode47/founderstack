@@ -15,14 +15,17 @@ function getSessionSecret() {
     return 'founderstackhub-dev-session-secret';
   }
 
-  throw new Error('APP_SESSION_SECRET (or FREE_DEALS_COOKIE_SECRET) must be configured.');
+  return null;
 }
 
 async function signSessionPayload(payload: string) {
+  const secret = getSessionSecret();
+  if (!secret) return null;
+
   const encoder = new TextEncoder();
   const key = await crypto.subtle.importKey(
     'raw',
-    encoder.encode(getSessionSecret()),
+    encoder.encode(secret),
     { name: 'HMAC', hash: 'SHA-256' },
     false,
     ['sign']
@@ -51,6 +54,7 @@ export async function decodeSessionForEdge(token: string | undefined | null): Pr
     if (!payload || !signature) return null;
 
     const expectedSignature = await signSessionPayload(payload);
+    if (!expectedSignature) return null;
     if (!safeEqual(expectedSignature, signature)) return null;
 
     return JSON.parse(Buffer.from(payload, 'base64url').toString('utf8')) as AppSession;
