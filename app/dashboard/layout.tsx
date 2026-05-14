@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
-import { Bookmark, CreditCard, Inbox, Layers3, LayoutDashboard, Mail, PlusSquare, Rocket, Settings, UserCircle2, Users } from 'lucide-react';
+import { Bookmark, Bot, CreditCard, Inbox, Layers3, LayoutDashboard, Mail, PlusSquare, Rocket, Settings, UserCircle2, Users } from 'lucide-react';
 import { OnboardingWrapper } from '@/components/dashboard/OnboardingWrapper';
 import { isAdminRole } from '@/lib/founderstack';
 import { getAuthenticatedProfile, getPartnerSubmissions } from '@/lib/site-data';
@@ -15,6 +15,7 @@ const accountNavItems = [
 
 const adminNavItems = [
   { href: '/dashboard/deals', label: 'Deals', icon: Layers3 },
+  { href: '/dashboard/discovery', label: 'Discovery', icon: Bot },
   { href: '/dashboard/members', label: 'Members', icon: Users },
   { href: '/dashboard/outreach', label: 'Outreach', icon: Mail },
   { href: '/dashboard/launch-readiness', label: 'Launch Readiness', icon: Rocket },
