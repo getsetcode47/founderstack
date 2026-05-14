@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import { Bookmark, CreditCard, Inbox, Layers3, LayoutDashboard, Mail, PlusSquare, Rocket, Settings, UserCircle2, Users } from 'lucide-react';
+import { OnboardingWrapper } from '@/components/dashboard/OnboardingWrapper';
 import { isAdminRole } from '@/lib/founderstack';
 import { getAuthenticatedProfile, getPartnerSubmissions } from '@/lib/site-data';
 
@@ -71,7 +72,13 @@ export default async function DashboardLayout({ children }: { children: ReactNod
           )}
         </aside>
 
-        <div>{children}</div>
+        <div>
+          {!profile?.onboarding_completed && session.user.id ? (
+            <OnboardingWrapper userId={session.user.id} referralCode={profile?.referral_code || 'FOUNDERSTACK'}>{children}</OnboardingWrapper>
+          ) : (
+            children
+          )}
+        </div>
       </div>
     </main>
   );
