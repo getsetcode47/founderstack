@@ -164,20 +164,20 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'FounderStackHub — Your AI Deal Agent for Startup Savings',
+  title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
   description:
-    'Founder Stack Hub uses AI-powered deal intelligence to find startup perks, SaaS discounts, cloud credits, and exclusive founder offers worth millions.',
+    'Founder Stack Hub helps founders stop overpaying for software by matching their startup stage, stack, and goals with relevant startup perks, cloud credits, and AI-tool offers.',
   openGraph: {
-    title: 'FounderStackHub — Your AI Deal Agent for Startup Savings',
+    title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
     description:
-      'While you build, our AI hunts startup deals, free credits, and founder perks across the internet 24/7.',
+      'Tell us what you are building and FounderStackHub matches you with relevant startup perks, cloud credits, and founder savings opportunities.',
     images: [{ url: 'https://founderstackhub.com/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FounderStackHub — Your AI Deal Agent for Startup Savings',
+    title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
     description:
-      'Your personal AI agent that hunts down the best startup deals, SaaS discounts, and free credits every day.',
+      'AI startup perks, cloud credits, and software savings matched to what your startup is building.',
     images: [{ url: 'https://founderstackhub.com/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png' }],
   },
 };
@@ -211,10 +211,10 @@ function AnnouncementBar() {
     <section className="border-b border-cyan-400/10 bg-cyan-500/10 pt-16">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-3 text-center text-sm text-cyan-100 sm:flex-row sm:px-6 lg:px-8">
         <p>
-          🤖 Our AI just found 47 new deals in the last 24 hours — $2.3M in fresh savings added today
+          🤖 Our AI just matched 47 new startup savings opportunities in the last 24 hours — $2.3M in fresh value added today
         </p>
-        <Link href="/deals" className="inline-flex items-center gap-2 font-semibold text-white hover:text-cyan-200">
-          Claim Yours <ArrowRight className="h-4 w-4" />
+        <Link href="/free-deals" className="inline-flex items-center gap-2 font-semibold text-white hover:text-cyan-200">
+          Run the audit <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </section>
@@ -246,35 +246,34 @@ function HeroSection() {
           <div className="mx-auto max-w-4xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
               <Sparkles className="h-3.5 w-3.5" />
-              AI-Powered Deal Intelligence — Working 24/7 For You
+              AI Startup Savings Audit — Built For Founders
             </span>
 
             <h1 className="mt-8 text-5xl font-bold leading-[0.96] tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Your Personal AI Agent
+              AI Startup Perks
               <br />
-              That Hunts Down the Best
+              Matched To
               <br />
-              Startup Deals. Every Day.
+              Your Stack.
             </h1>
 
             <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-              While you sleep, our AI scours the entire internet — finding free credits, startup perks,
-              SaaS discounts, and exclusive offers worth millions.
+              Tell us what you&apos;re building, your stage, and the tools you use. FounderStackHub helps you uncover relevant cloud credits, AI-tool offers, SaaS discounts, and founder-only perks without manually searching hundreds of scattered startup pages.
             </p>
-            <p className="mx-auto mt-3 max-w-2xl text-lg leading-8 text-slate-400">You wake up to savings. Not spreadsheets.</p>
+            <p className="mx-auto mt-3 max-w-2xl text-lg leading-8 text-slate-400">You get a startup savings workflow. Not a static deals list.</p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href="/free-deals"
                 className="inline-flex h-12 items-center gap-2 rounded-md bg-white px-8 text-base font-semibold text-black transition hover:bg-slate-100"
               >
-                🚀 Start For Free — It&apos;s $0
+                🚀 Run My Free Savings Audit
               </Link>
               <Link
                 href="/deals"
                 className="inline-flex h-12 items-center gap-2 rounded-md border border-white/20 bg-white/5 px-8 text-base font-semibold text-white transition hover:bg-white/10"
               >
-                See Today&apos;s Deals <ArrowRight className="h-4 w-4" />
+                Browse Live Founder Offers <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
@@ -337,7 +336,7 @@ function ProblemSection() {
             <p>AWS gives away $100,000 in credits. Notion hands out 6 months free. GitHub offers $10,000 to eligible startups. Zendesk gives $50,000 in free access.</p>
             <p>These deals are real. They are live right now.</p>
             <p>
-              But they&apos;re buried across hundreds of websites, partner pages, accelerator portals, and startup programs — scattered in places no founder has time to look.
+              But they&apos;re buried across hundreds of cloud programs, partner pages, accelerator portals, and startup websites — scattered in places no founder has time to search manually.
             </p>
             <p className="text-white">Until now.</p>
           </div>
@@ -404,7 +403,7 @@ function CategoriesSection() {
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Every Type of Startup Saving.
             <br />
-            All In One Place.
+            Matched To What You Need Next.
           </h2>
         </div>
 
@@ -468,10 +467,10 @@ function FeaturedDealsSection({ deals }: { deals: Awaited<ReturnType<typeof getH
             Featured Deals
           </p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            The Best Live Offers In Your Stack, Right Now.
+            The Best Live Offers Our System Would Surface For Founders Like You.
           </h2>
           <p className="mt-5 text-lg leading-8 text-slate-300">
-            These are the high-value deals our system is surfacing right now — ready to browse, claim, and save on.
+            These are high-value founder offers being surfaced right now — the kind of savings your audit would prioritize based on stage, stack, and goals.
           </p>
         </div>
 
@@ -482,7 +481,7 @@ function FeaturedDealsSection({ deals }: { deals: Awaited<ReturnType<typeof getH
             href="/deals"
             className="inline-flex h-12 items-center gap-2 rounded-md border border-white/20 bg-white/5 px-8 text-sm font-medium text-white transition hover:bg-white/10"
           >
-            See All 500+ Deals <ArrowRight className="h-4 w-4" />
+            Browse All Founder Offers <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
@@ -499,9 +498,9 @@ function HowItWorksSection() {
             Simple As 3 Steps
           </p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Sign Up. Let the AI Work.
+            Answer A Few Questions.
             <br />
-            Wake Up Richer.
+            Get A Savings Plan.
           </h2>
         </div>
 
@@ -564,9 +563,9 @@ function ComparisonSection() {
             Why FounderStackHub Beats Everything Else
           </p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            The Most Affordable Deal Platform
+            More Than A Directory.
             <br />
-            In the Market. By a Mile.
+            A Real Savings Workflow For Founders.
           </h2>
         </div>
 
@@ -628,7 +627,7 @@ function UrgencySection() {
           href="/free-deals"
           className="mt-10 inline-flex h-12 items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-black transition hover:bg-slate-100"
         >
-          🚀 Claim Your Deals Before They&apos;re Gone
+          🚀 Run My Free Savings Audit
         </Link>
         <p className="mt-4 text-sm text-slate-500">Free to start. No credit card required.</p>
       </div>
@@ -638,16 +637,16 @@ function UrgencySection() {
 
 function FinalCtaSection() {
   return (
-    <section id="blog" className="py-24">
+    <section id="audit" className="py-24">
       <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-cyan-400/10 via-white/[0.04] to-orange-400/10 px-6 py-14 sm:px-10">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            You&apos;re One Click Away From
+            Start With A Free AI Startup Savings Audit.
             <br />
-            $10,000,000 in Startup Savings.
+            Then Unlock The Full Founder Stack.
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-            Join 12,000+ founders who stopped overpaying for tools. Let our AI do the work. You keep the savings.
+            FounderStackHub is built to help founders stop overpaying for software. Tell us what you&apos;re building, get matched perks, and decide which savings to unlock next.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -655,19 +654,19 @@ function FinalCtaSection() {
               href="/free-deals"
               className="inline-flex h-12 items-center gap-2 rounded-md bg-white px-8 text-base font-semibold text-black transition hover:bg-slate-100"
             >
-              🤖 Start Free — Let the AI Find My Deals
+              🤖 Run My Free Savings Audit
             </Link>
             <Link
               href="/deals"
               className="inline-flex h-12 items-center gap-2 rounded-md border border-white/20 bg-white/5 px-8 text-base font-semibold text-white transition hover:bg-white/10"
             >
-              See All 500+ Deals First <ArrowRight className="h-4 w-4" />
+              Browse Live Founder Offers <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <p className="mt-6 text-sm text-slate-400">$0 to start · No credit card · Instant access · Cancel anytime</p>
+          <p className="mt-6 text-sm text-slate-400">$0 to start · No credit card · Founder-friendly onboarding · Instant access</p>
           <p className="mt-4 text-sm text-slate-500">
-            The average FounderStackHub member saves $47,000 in their first 90 days. Your AI agent is ready.
+            Start with free offers, then upgrade when you want deeper access, better recommendations, and premium founder perks.
           </p>
         </div>
       </div>

@@ -12,7 +12,7 @@ const navLinks = [
   { href: '/deals', label: 'Deals' },
   { href: '/#how-it-works', label: 'How It Works' },
   { href: '/#pricing', label: 'Pricing' },
-  { href: '/#blog', label: 'Blog' },
+  { href: '/#audit', label: 'Savings Audit' },
 ];
 
 export function Navbar() {
@@ -103,7 +103,7 @@ export function Navbar() {
                 href="/free-deals"
                 className="inline-flex h-9 items-center justify-center rounded-md bg-orange-500 px-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-600"
               >
-                Start Saving Free →
+                Run Free Savings Audit →
               </Link>
             </>
           )}
@@ -152,7 +152,7 @@ export function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="block rounded-xl bg-orange-500 px-4 py-3 text-sm font-semibold text-white"
                 >
-                  Start Saving Free →
+                  Run Free Savings Audit →
                 </Link>
               </>
             )}

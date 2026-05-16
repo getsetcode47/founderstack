@@ -28,7 +28,7 @@ export function Footer() {
               <span className="text-lg font-bold">Founder Stack Hub</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
-              Your AI-powered deal agent, working 24/7 so you don&apos;t have to.
+              Your AI startup savings copilot, matching founders with relevant perks, credits, and software savings.
             </p>
             <div className="mb-4 mt-5 flex items-center gap-3">
               <Link
@@ -56,6 +56,7 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold text-white">Deals</h4>
             <div className="space-y-2.5 text-sm">
               <Link href="/deals" className="block hover:text-white">Browse All</Link>
+              <Link href="/free-deals" className="block hover:text-white">Free Savings Audit</Link>
               <Link href="/deals?category=AI+Tools" className="block hover:text-white">AI Tools</Link>
               <Link href="/deals?category=Cloud+Credits" className="block hover:text-white">Cloud</Link>
               <Link href="/deals?category=Marketing" className="block hover:text-white">Marketing</Link>
@@ -67,7 +68,7 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold text-white">Company</h4>
             <div className="space-y-2.5 text-sm">
               <Link href="/#how-it-works" className="block hover:text-white">About</Link>
-              <Link href="/#blog" className="block hover:text-white">Blog</Link>
+              <Link href="/#audit" className="block hover:text-white">Savings Audit</Link>
               <Link href="mailto:support@founderstackhub.com" className="block hover:text-white">Contact</Link>
               <Link href="/submit-tool" className="block hover:text-white">Partner with Us</Link>
               <Link href="/deals" className="block hover:text-white">Careers</Link>

@@ -36,12 +36,12 @@ export function HomePricingSection() {
             Your Investment Vs Your Return
           </p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Pick The Pro Plan.
+            Start With The Free Audit.
             <br />
-            Let The Savings Compound.
+            Upgrade When The Savings Are Clear.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-            We&apos;re focusing on the plans founders actually use: monthly for flexibility, annual for the best recurring value, and lifetime for long-term operators.
+            FounderStackHub begins with a founder-friendly savings audit, then unlocks deeper discovery, premium offers, and better recommendation workflows as you grow.
           </p>
         </div>
 

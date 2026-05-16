@@ -72,23 +72,23 @@ export function FreeDealsLanding({
           <div className="mx-auto max-w-4xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200">
               <Gift className="h-3.5 w-3.5" />
-              FounderStackHub Free Deals Access
+              FounderStackHub AI Savings Audit
             </span>
             <h1 className="mt-8 text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
-              Claim Our Curated
+              Run Your Free
               <br />
               <span className="bg-gradient-to-r from-cyan-300 via-white to-orange-300 bg-clip-text text-transparent">
-                Free Startup Deals
+                Startup Savings Audit
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              We hand-pick a small set of the best free credits, free plans, and zero-cost startup offers. Verify your email, unlock the list, and start claiming.
+              Tell us where to send your unlock link, verify your email, and get a founder-friendly starting point: free credits, zero-cost offers, and the first perks most relevant to your stack.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-300">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
                 <Sparkles className="h-4 w-4 text-cyan-300" />
-                3 to 6 curated free deals
+                Free startup savings audit
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
                 <Mail className="h-4 w-4 text-cyan-300" />
@@ -96,7 +96,7 @@ export function FreeDealsLanding({
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
                 <CheckCircle2 className="h-4 w-4 text-cyan-300" />
-                Instant unlock after verification
+                Unlock curated free offers instantly
               </span>
             </div>
           </div>
@@ -107,7 +107,7 @@ export function FreeDealsLanding({
                 <form onSubmit={sendCode} className="space-y-4">
                   <div>
                     <p className="text-sm uppercase tracking-[0.22em] text-slate-500">Step 1</p>
-                    <h2 className="mt-3 text-2xl font-semibold">Enter your email to unlock the free deals</h2>
+                    <h2 className="mt-3 text-2xl font-semibold">Enter your email to start the audit</h2>
                   </div>
                   <input
                     value={name}
@@ -129,7 +129,7 @@ export function FreeDealsLanding({
                     disabled={loading}
                     className="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-5 text-sm font-semibold text-black transition hover:bg-slate-100 disabled:opacity-70"
                   >
-                    {loading ? 'Sending code...' : 'Send verification code'}
+                    {loading ? 'Sending code...' : 'Start my free savings audit'}
                   </button>
                 </form>
               ) : (
@@ -171,7 +171,7 @@ export function FreeDealsLanding({
               </div>
               <h2 className="mt-4 text-2xl font-semibold">Free deals unlocked</h2>
               <p className="mt-3 text-sm leading-7 text-cyan-50/80">
-                Verified for <span className="font-medium text-white">{verifiedEmail}</span>. Claim the free deals below while they’re still live.
+                Verified for <span className="font-medium text-white">{verifiedEmail}</span>. Start with these free offers, then continue into the full founder savings workflow.
               </p>
             </div>
           )}
@@ -182,12 +182,12 @@ export function FreeDealsLanding({
         <div className="mb-10 max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-orange-300">Free Deals</p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Free credits, free plans, and zero-cost offers.
+            Start with free savings before you pay for anything.
           </h2>
           <p className="mt-5 text-lg leading-8 text-slate-300">
             {verifiedEmail
-              ? 'These are the admin-selected free offers available right now.'
-              : 'Verify your email to unlock the current list of free deals.'}
+              ? 'These are the founder-friendly free offers we surface first inside the audit.'
+              : 'Verify your email to unlock the curated free offers we use as the first step in the savings audit.'}
           </p>
         </div>
 
@@ -210,7 +210,7 @@ export function FreeDealsLanding({
             </div>
             <h3 className="mt-5 text-2xl font-semibold text-white">Verify first to see the free deals</h3>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400">
-              We use a quick email verification step to unlock this page and send you updates when new free startup offers are added.
+              We use a quick email verification step to unlock your free savings audit and send updates when new founder-friendly free offers are added.
             </p>
           </div>
         )}
