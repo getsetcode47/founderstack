@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, Brain, CheckCheck, Copy, Lightbulb, Loader2, Rocket, Sparkles } from 'lucide-react';
+import { ArrowRight, Brain, CheckCheck, Copy, Lightbulb, Loader2, Rocket, Sparkles, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { toast } from 'sonner';
@@ -44,9 +45,15 @@ interface OnboardingModalProps {
   userId: string;
   referralCode: string;
   onComplete: () => void;
+  onDismiss: () => void;
 }
 
-export function OnboardingModal({ referralCode, onComplete }: OnboardingModalProps) {
+function getLogoFallbackUrl(name: string) {
+  const qs = new URLSearchParams({ name, brand: '#0ea5e9' });
+  return `/api/logo?${qs.toString()}`;
+}
+
+export function OnboardingModal({ referralCode, onComplete, onDismiss }: OnboardingModalProps) {
   const [step, setStep] = useState(1);
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -127,6 +134,14 @@ export function OnboardingModal({ referralCode, onComplete }: OnboardingModalPro
               <div key={index} className={`h-1.5 flex-1 rounded-full ${index <= step ? 'bg-cyan-400' : 'bg-white/10'}`} />
             ))}
           </div>
+          <button
+            type="button"
+            onClick={onDismiss}
+            aria-label="Close onboarding"
+            className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/30 text-white/80 transition hover:bg-white/10 hover:text-white"
+          >
+            <X className="h-4 w-4" />
+          </button>
         </div>
 
         <AnimatePresence mode="wait">
@@ -304,11 +319,13 @@ export function OnboardingModal({ referralCode, onComplete }: OnboardingModalPro
                   <div key={deal.slug} className="rounded-[24px] border border-gray-800 bg-black p-5 shadow-[0_18px_36px_rgba(0,0,0,0.3)]">
                     <div className="flex items-start gap-4">
                       <div className="relative h-14 w-14 overflow-hidden rounded-xl border border-gray-800 bg-white/[0.03]">
-                        {deal.logo_image_url ? (
-                          <img src={deal.logo_image_url} alt={deal.name} className="h-full w-full object-contain p-2" />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center text-lg text-white">{deal.name.slice(0, 2)}</div>
-                        )}
+                        <Image
+                          src={deal.logo_image_url || getLogoFallbackUrl(deal.name)}
+                          alt={deal.name}
+                          fill
+                          className="object-contain p-2"
+                          sizes="56px"
+                        />
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-lg text-white">{deal.name}</p>
@@ -342,6 +359,13 @@ export function OnboardingModal({ referralCode, onComplete }: OnboardingModalPro
                 <Button onClick={onComplete} className="h-11 flex-1 bg-white text-black hover:bg-gray-100">
                   Start exploring my stack <Rocket className="ml-2 h-4 w-4" />
                 </Button>
+                <Button
+                  variant="outline"
+                  onClick={onDismiss}
+                  className="h-11 border-gray-700 bg-transparent text-white hover:bg-white/5"
+                >
+                  Close for now
+                </Button>
                 <Link href="/deals" className="inline-flex h-11 items-center justify-center rounded-md border border-gray-700 px-4 text-sm text-white hover:border-gray-500">
                   Browse full catalog
                 </Link>
@@ -355,4 +379,4 @@ export function OnboardingModal({ referralCode, onComplete }: OnboardingModalPro
 }
 
 const inputClass =
-  'h-12 w-full rounded-xl border border-gray-800 bg-white/[0.03] px-4 text-sm text-white focus:border-gray-600 focus:outline-none';
+  'h-12 w-full rounded-xl border border-gray-800 bg-white/[0.03] px-4 text-sm text-white focus:border-gray-600 focus:outline-none [&>option]:bg-[#020617] [&>option]:text-white';

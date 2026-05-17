@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { OnboardingModal } from '@/components/onboarding/OnboardingModal';
 
@@ -11,10 +11,24 @@ interface OnboardingWrapperProps {
 }
 
 export function OnboardingWrapper({ userId, referralCode, children }: OnboardingWrapperProps) {
-  const [showOnboarding, setShowOnboarding] = useState(true);
+  const [showOnboarding, setShowOnboarding] = useState(false);
   const router = useRouter();
 
-  function handleComplete() {
+  const storageKey = `fsh_onboarding_completed_${userId}`;
+
+  useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(storageKey);
+      setShowOnboarding(stored !== 'true');
+    } catch {
+      setShowOnboarding(true);
+    }
+  }, [storageKey]);
+
+  function markDoneAndClose() {
+    try {
+      window.localStorage.setItem(storageKey, 'true');
+    } catch {}
     setShowOnboarding(false);
     router.refresh();
   }
@@ -25,7 +39,8 @@ export function OnboardingWrapper({ userId, referralCode, children }: Onboarding
         <OnboardingModal
           userId={userId}
           referralCode={referralCode}
-          onComplete={handleComplete}
+          onComplete={markDoneAndClose}
+          onDismiss={markDoneAndClose}
         />
       )}
       {children}
