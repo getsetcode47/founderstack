@@ -15,17 +15,57 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Founder Stack Hub',
     description: 'Premium founder deals, startup software savings, and curated partner perks.',
+    type: 'website',
+    url: '/',
+    siteName: 'FounderStackHub',
     images: [{ url: '/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png' }],
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'FounderStackHub',
+    description: 'AI startup perks matched to your stack.',
     images: [{ url: '/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png' }],
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const schemaOrg = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'FounderStackHub',
+      url: 'https://founderstackhub.com',
+      logo: 'https://founderstackhub.com/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png',
+      sameAs: [
+        'https://x.com/founderstackhub',
+        'https://www.linkedin.com/in/arbaz-khan47/',
+        'https://www.youtube.com/@GetSetCode',
+      ],
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          email: 'arbaz@founderstackhub.com',
+        },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'FounderStackHub',
+      url: 'https://founderstackhub.com',
+    },
+  ];
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          // JSON-LD is meant to be inline.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+        />
+      </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
           <RootLayoutClient>{children}</RootLayoutClient>

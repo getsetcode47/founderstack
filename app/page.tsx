@@ -166,11 +166,13 @@ const FAQS = [
 export const metadata: Metadata = {
   title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
   description:
-    'Founder Stack Hub helps founders stop overpaying for software by matching their startup stage, stack, and goals with relevant startup perks, cloud credits, and AI-tool offers.',
+    'FounderStackHub matches your startup with cloud credits, AI tool perks, and software discounts based on what you are building. Get your top 10 offers to claim next in minutes.',
   openGraph: {
     title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
     description:
       'Tell us what you are building and FounderStackHub matches you with relevant startup perks, cloud credits, and founder savings opportunities.',
+    type: 'website',
+    url: 'https://founderstackhub.com/',
     images: [{ url: 'https://founderstackhub.com/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png' }],
   },
   twitter: {

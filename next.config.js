@@ -37,6 +37,11 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
+      {
+        // Cache public/ static image assets for performance. (AIOSEO reported missing image expires headers.)
+        source: '/:path*.(png|jpg|jpeg|gif|webp|svg|ico)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
     ];
   },
 };
