@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { RootLayoutClient } from '@/components/layout/RootLayoutClient';
 
@@ -60,6 +61,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <Script
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+          defer
+          data-website-id="dfid_Y8sr7KmdXGbn2SVCngUpx"
+          data-domain="founderstackhub.com"
+        />
         <script
           type="application/ld+json"
           // JSON-LD is meant to be inline.
