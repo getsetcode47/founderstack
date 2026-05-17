@@ -32,7 +32,7 @@ export function Footer() {
             </p>
             <div className="mb-4 mt-5 flex items-center gap-3">
               <Link
-                href="mailto:support@founderstackhub.com"
+                href="mailto:arbaz@founderstackhub.com"
                 aria-label="Email support"
                 className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm transition-colors hover:bg-white/5 hover:text-white"
               >
@@ -44,6 +44,22 @@ export function Footer() {
                 className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm transition-colors hover:bg-white/5 hover:text-white"
               >
                 Partner with Us
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/arbaz-khan47/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm transition-colors hover:bg-white/5 hover:text-white"
+              >
+                LinkedIn
+              </Link>
+              <Link
+                href="https://www.youtube.com/@GetSetCode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm transition-colors hover:bg-white/5 hover:text-white"
+              >
+                YouTube
               </Link>
             </div>
             <div className="inline-flex items-center gap-1.5 text-xs text-slate-500">
@@ -69,7 +85,23 @@ export function Footer() {
             <div className="space-y-2.5 text-sm">
               <Link href="/#how-it-works" className="block hover:text-white">About</Link>
               <Link href="/#audit" className="block hover:text-white">Savings Audit</Link>
-              <Link href="mailto:support@founderstackhub.com" className="block hover:text-white">Contact</Link>
+              <Link href="mailto:arbaz@founderstackhub.com" className="block hover:text-white">Contact</Link>
+              <Link
+                href="https://www.linkedin.com/in/arbaz-khan47/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-white"
+              >
+                LinkedIn
+              </Link>
+              <Link
+                href="https://www.youtube.com/@GetSetCode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-white"
+              >
+                YouTube
+              </Link>
               <Link href="/submit-tool" className="block hover:text-white">Partner with Us</Link>
               <Link href="/deals" className="block hover:text-white">Careers</Link>
             </div>
