@@ -379,4 +379,4 @@ export function OnboardingModal({ referralCode, onComplete, onDismiss }: Onboard
 }
 
 const inputClass =
-  'h-12 w-full rounded-xl border border-gray-800 bg-white/[0.03] px-4 text-sm text-white focus:border-gray-600 focus:outline-none [&>option]:bg-[#020617] [&>option]:text-white';
+  'h-12 w-full rounded-xl border border-gray-800 bg-[#020617] px-4 text-sm text-white focus:border-gray-600 focus:outline-none [color-scheme:dark] [&>option]:bg-[#020617] [&>option]:text-white';

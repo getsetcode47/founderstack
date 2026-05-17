@@ -14,7 +14,7 @@ function SignInPageInner() {
   const [mode, setMode] = useState<'signin' | 'signup'>(
     searchParams.get('mode') === 'signup' ? 'signup' : 'signin'
   );
-  const redirectTo = normalizeInternalRedirect(searchParams.get('redirectTo'), '/deals');
+  const redirectTo = normalizeInternalRedirect(searchParams.get('redirectTo'), '/dashboard');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [form, setForm] = useState({
