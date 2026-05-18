@@ -3,13 +3,22 @@ import { getAuthenticatedProfile, getPublishedDeals, getSiteSettings, getUserDea
 import { DealsExplorer } from '@/components/founderstack/DealsExplorer';
 import { DealLogo } from '@/components/founderstack/DealLogo';
 import { hasPaidAccess, isAdminRole } from '@/lib/founderstack';
+import { absoluteUrl, TARGET_KEYWORDS } from '@/lib/seo';
 
 export const revalidate = 300;
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Deals | Founder Stack Hub',
-  description: 'Browse the live Founder Stack Hub deal directory with search, filtering, sorting, and auth-aware claim behavior.',
+  title: 'Startup Deals Directory',
+  description: 'Browse startup perks, founder deals, software discounts, cloud credits, AI tool offers, and SaaS discounts for startups.',
+  keywords: TARGET_KEYWORDS,
+  alternates: { canonical: '/deals' },
+  openGraph: {
+    title: 'Startup Deals Directory | FounderStackHub',
+    description: 'Browse startup perks, founder deals, software discounts, cloud credits, AI tool offers, and SaaS discounts for startups.',
+    url: absoluteUrl('/deals'),
+    type: 'website',
+  },
 };
 
 export default async function DealsPage() {
@@ -24,6 +33,27 @@ export default async function DealsPage() {
 
   return (
     <main className="relative overflow-hidden bg-[#07111f] px-4 pb-16 pt-24 text-white sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'Startup deals and founder perks directory',
+            description: metadata.description,
+            url: absoluteUrl('/deals'),
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: deals.slice(0, 50).map((deal, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                url: absoluteUrl(`/deal/${deal.slug}`),
+                name: deal.name,
+              })),
+            },
+          }),
+        }}
+      />
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -47,12 +77,12 @@ export default async function DealsPage() {
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/80">Live directory</p>
               <h1 className="mt-4 text-5xl leading-none sm:text-6xl">
-                The Best Live Offers
+                Startup Perks and Founder Deals
                 <br />
                 In Your Stack, Right Now.
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300">
-                Browse the same AI-curated founder offers, credits, and discounts featured on the homepage, with live search, category filters, and claim-ready cards.
+                Browse AI-curated startup software discounts, cloud credits, SaaS offers, AI tool deals, and founder-only partner perks with live search, category filters, and claim-ready cards.
               </p>
               <div className="mt-8 flex flex-wrap gap-3 text-sm text-gray-400">
                 <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-slate-300">{deals.length} published deals</span>

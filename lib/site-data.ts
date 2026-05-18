@@ -6,7 +6,7 @@ import { hasFreeDealFlag } from '@/lib/free-deals';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { DEFAULT_SITE_SETTINGS, getOfficialDealLogoUrl } from '@/lib/founderstack';
-import type { Category, Deal, DealClaim, PartnerSubmission, Perk, Profile, SiteSettings } from '@/types';
+import type { BlogPost, Category, Deal, DealClaim, PartnerSubmission, Perk, Profile, SiteSettings } from '@/types';
 
 const DIRECT_REDEMPTION_OVERRIDES: Record<string, string> = {
   'AWS Activate': 'https://aws.amazon.com/activate/',
@@ -402,4 +402,52 @@ export async function getUserDealClaims(userId: string) {
   }
 
   return (data ?? []) as DealClaim[];
+}
+
+export const getPublishedBlogPosts = cache(async () => {
+  const supabase = createAdminClient();
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    logDataError('Failed to load blog posts', error);
+    return [] as BlogPost[];
+  }
+
+  return (data ?? []) as BlogPost[];
+});
+
+export async function getBlogPostBySlug(slug: string) {
+  const supabase = createAdminClient();
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .maybeSingle();
+
+  if (error) {
+    logDataError(`Failed to load blog post ${slug}`, error);
+    return null;
+  }
+
+  return data as BlogPost | null;
+}
+
+export async function getAllBlogPostsForAutomation() {
+  const supabase = createAdminClient();
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    logDataError('Failed to load blog automation posts', error);
+    return [] as BlogPost[];
+  }
+
+  return (data ?? []) as BlogPost[];
 }

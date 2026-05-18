@@ -10,5 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://founderstackhub.com/sitemap.xml',
+    host: 'https://founderstackhub.com',
   };
 }

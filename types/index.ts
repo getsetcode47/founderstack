@@ -149,3 +149,26 @@ export interface PartnerSubmission {
   status: 'new' | 'reviewing' | 'approved' | 'rejected';
   created_at: string;
 }
+
+export type BlogPostStatus = 'draft' | 'published' | 'archived';
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  status: BlogPostStatus;
+  target_keyword: string;
+  topic_cluster: string;
+  search_intent: string | null;
+  meta_title: string;
+  meta_description: string;
+  cover_image_url: string | null;
+  author_name: string;
+  ai_model: string | null;
+  source_notes: string | null;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+}

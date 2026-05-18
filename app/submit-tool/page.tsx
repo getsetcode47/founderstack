@@ -1,9 +1,17 @@
 import type { Metadata } from 'next';
 import { SubmitToolForm } from '@/components/founderstack/SubmitToolForm';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Submit Tool | Founder Stack Hub',
-  description: 'Submit your startup deal or partner perk to Founder Stack Hub.',
+  title: 'Submit a Startup Deal or Founder Perk',
+  description: 'Submit your startup deal, software discount, founder perk, or partner offer to be reviewed for the FounderStackHub directory.',
+  alternates: { canonical: '/submit-tool' },
+  openGraph: {
+    title: 'Submit a Startup Deal or Founder Perk | FounderStackHub',
+    description: 'Submit your startup deal, software discount, founder perk, or partner offer to be reviewed for the FounderStackHub directory.',
+    url: absoluteUrl('/submit-tool'),
+    type: 'website',
+  },
 };
 
 export default function SubmitToolPage() {
