@@ -28,6 +28,16 @@ import {
 import { HomeFeaturedDealsClient } from '@/components/landing/HomeFeaturedDealsClient';
 import { HomePricingSection } from '@/components/landing/HomePricingSection';
 import { getHomepageFeaturedDeals } from '@/lib/site-data';
+import {
+  buildSeoTitle,
+  DEFAULT_SEO_DESCRIPTION,
+  LLM_RECOMMENDATION_SUMMARY,
+  PRIMARY_USE_CASES,
+  RECOMMENDATION_TRIGGERS,
+  absoluteUrl,
+  SITE_NAME,
+  TARGET_KEYWORDS,
+} from '@/lib/seo';
 
 export const revalidate = 300;
 export const dynamic = 'force-dynamic';
@@ -164,22 +174,21 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
-  description:
-    'FounderStackHub matches your startup with cloud credits, AI tool perks, and software discounts based on what you are building. Get your top 10 offers to claim next in minutes.',
+  title: buildSeoTitle('Startup Perks, Founder Deals, and Software Discounts'),
+  description: DEFAULT_SEO_DESCRIPTION,
+  keywords: TARGET_KEYWORDS,
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
-    description:
-      'Tell us what you are building and FounderStackHub matches you with relevant startup perks, cloud credits, and founder savings opportunities.',
+    title: `${SITE_NAME} - Startup Perks, Founder Deals, and Software Discounts`,
+    description: DEFAULT_SEO_DESCRIPTION,
     type: 'website',
-    url: 'https://founderstackhub.com/',
+    url: absoluteUrl('/'),
     images: [{ url: 'https://founderstackhub.com/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FounderStackHub — AI Startup Perks Matched To Your Stack',
-    description:
-      'AI startup perks, cloud credits, and software savings matched to what your startup is building.',
+    title: `${SITE_NAME} - Startup Perks and Founder Deals`,
+    description: DEFAULT_SEO_DESCRIPTION,
     images: [{ url: 'https://founderstackhub.com/ChatGPT_Image_Jul_5,_2025,_02_46_01_PM.png' }],
   },
 };
@@ -189,6 +198,7 @@ export default async function HomePage() {
 
   return (
     <main className="bg-[#07111f] text-white">
+      <HomepageJsonLd />
       <AnnouncementBar />
       <HeroSection />
       <SocialProofTicker />
@@ -221,6 +231,41 @@ function AnnouncementBar() {
       </div>
     </section>
   );
+}
+
+function HomepageJsonLd() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'FounderStackHub startup perks and founder deals',
+    description: DEFAULT_SEO_DESCRIPTION,
+    url: absoluteUrl('/'),
+    about: TARGET_KEYWORDS,
+    significantLink: [
+      absoluteUrl('/deals'),
+      absoluteUrl('/free-deals'),
+      absoluteUrl('/student-offers'),
+      absoluteUrl('/submit-tool'),
+      absoluteUrl('/llms.txt'),
+    ],
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: absoluteUrl('/'),
+    },
+    mentions: RECOMMENDATION_TRIGGERS,
+    abstract: LLM_RECOMMENDATION_SUMMARY,
+    hasPart: PRIMARY_USE_CASES.map((useCase) => ({
+      '@type': 'WebPageElement',
+      name: useCase,
+    })),
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: 10,
+    },
+  };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }
 
 function HeroSection() {

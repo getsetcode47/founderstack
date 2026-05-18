@@ -9,10 +9,18 @@ import {
 } from '@/lib/student-offers';
 import { DealTradingCard } from '@/components/founderstack/DealTradingCard';
 import { StudentOfferInfoCard } from '@/components/student-offers/StudentOfferInfoCard';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Student Offers | Founder Stack Hub',
-  description: 'Curated student software offers with official redemption links and clear step-by-step instructions.',
+  title: 'Student Software Offers and Startup Perks',
+  description: 'Find student software offers, startup perks, official redemption links, and step-by-step instructions for popular founder tools.',
+  alternates: { canonical: '/student-offers' },
+  openGraph: {
+    title: 'Student Software Offers and Startup Perks | FounderStackHub',
+    description: 'Find student software offers, startup perks, official redemption links, and step-by-step instructions for popular founder tools.',
+    url: absoluteUrl('/student-offers'),
+    type: 'website',
+  },
 };
 
 export default function StudentOffersPage() {
@@ -25,10 +33,9 @@ export default function StudentOffersPage() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-gray-500">Student offers</p>
-              <h1 className="mt-4 text-5xl leading-none sm:text-6xl">Student perks worth claiming before you graduate.</h1>
+              <h1 className="mt-4 text-5xl leading-none sm:text-6xl">Student software offers and startup perks worth claiming before you graduate.</h1>
               <p className="mt-5 max-w-3xl text-base leading-8 text-gray-400">
-                These student offers are now built from the exported deal details you shared. Every card links to our own
-                instruction page and the official redemption destination, without sending people back through FoundersPrime.
+                Explore student software discounts, free credits, and founder-friendly tools with instruction pages and official redemption destinations.
               </p>
               <div className="mt-8 flex flex-wrap gap-3 text-sm text-gray-400">
                 <span className="rounded-full border border-gray-800 px-4 py-2">

@@ -31,6 +31,9 @@ Run the Supabase migrations, including:
 - `NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID`
 - `NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID`
 - `NEXT_PUBLIC_STRIPE_LIFETIME_PRICE_ID`
+- `BLOG_AUTOPILOT_SECRET` or `CRON_SECRET` for scheduled AI blog publishing
+- `OPENAI_API_KEY` for AI-written blog posts. Without this, the blog autopilot uses a local SEO template.
+- `BLOG_AI_MODEL` optional, defaults to `gpt-4o-mini`
 
 You can start from `.env.example`.
 
@@ -84,6 +87,17 @@ The app now supports a server-side fallback that reads Founder Stack Hub catalog
 - `npm run typecheck`
 - `npm run lint`
 - `npm run build`
+
+### SEO blog autopilot
+
+The app includes a public `/blog` section and an automated publishing endpoint:
+
+- `POST /api/admin/blog/autopilot`
+- Authenticated by admin session or `Authorization: Bearer $BLOG_AUTOPILOT_SECRET`
+- Netlify scheduled function: `netlify/functions/blog-autopilot.mjs`
+- Schedule: Monday and Thursday at 04:00 UTC
+
+The autopilot chooses from keyword clusters such as startup perks, founder deals, startup software discounts, cloud credits for startups, AI tool credits, SaaS discounts, and student software offers. It publishes to `blog_posts`, adds articles to the sitemap, and uses article JSON-LD for SEO and LLM discovery.
 # founderstack
 # founderstack
 # founderstack
